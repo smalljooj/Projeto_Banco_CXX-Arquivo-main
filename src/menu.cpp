@@ -1,10 +1,12 @@
 #include "menu.h"
 #include <memory>
 #include <iomanip>
+#include "interfaces.h"
 
 void menu(banco& bank)
 {
-	int op = 0;
+	int op = 1;
+
 	while(1)
 	{
 		std::cout << std::endl;
@@ -20,11 +22,22 @@ void menu(banco& bank)
 			try
 			{	
 				auto c = bank.get_conta(num);
+
 				auto senha_ = console::read<int>("Digite a senha da sua conta: ");
 				if(c->verificar_senha(senha_))
 					op = secao_usuario(bank, c);
 				else
-					std::cout << "Senha Inválida" << std::endl;
+				{
+					while(!c->verificar_senha(senha_))
+					{
+						std::cout << "\nSenha Invalida, Digite novamente:\n(-1: para redigitar o numero da conta)\n" << std::endl;
+						senha_ = console::read<int>();
+						if(senha_ == -1)
+							break;
+					}
+					if(c->verificar_senha(senha_))
+						op = secao_usuario(bank, c);
+				}
 			}
 			catch(std::exception& e)
 			{
@@ -46,6 +59,8 @@ void menu(banco& bank)
 int secao_usuario(banco& bank, std::shared_ptr<conta const> c)
 {
 	int op;
+	interfaces* usuario = interfaces::get_instance();
+
 	std::cout<< std::endl;
 	while(1){
 
@@ -70,19 +85,19 @@ int secao_usuario(banco& bank, std::shared_ptr<conta const> c)
 		switch(op)
 		{
 			case 1:
-				usuario::depositar(bank, c);
+				usuario->depositar(bank, c);
 				break;
 			case 2:
-				usuario::retirar(bank, c);
+				usuario->retirar(bank, c);
 				break;
 			case 3:
-				usuario::transferir(bank, c);
+				usuario->transferir(bank, c);
 				break;
 			case 4:
-				usuario::saldo(bank, c);
+				usuario->saldo(bank, c);
 				break;
 			case 5:
-				usuario::extrato(bank, c);
+				usuario->extrato(bank, c);
 				break;
 			default:
 				std::cout<< std::endl;
@@ -98,6 +113,7 @@ int secao_usuario(banco& bank, std::shared_ptr<conta const> c)
 int secao_gerente(banco& bank)
 {
 	int op;
+	interfaces* gerente = interfaces::get_instance();
 	std::cout<< std::endl;
 	while(1)
 	{
@@ -120,22 +136,22 @@ int secao_gerente(banco& bank)
 		switch(op)
 		{
 			case 1:
-				gerente::abrir_conta(bank);
+				gerente->abrir_conta(bank);
 				break;
 			case 2:
-				gerente::consultar_conta(bank);
+				gerente->consultar_conta(bank);
 				break;
 			case 3:
-				gerente::atualizar_conta(bank);
+				gerente->atualizar_conta(bank);
 				break;
 			case 4:
-				gerente::fechar_conta(bank);
+				gerente->fechar_conta(bank);
 				break;
 			case 5:
-				gerente::listar_contas(bank);
+				gerente->listar_contas(bank);
 				break;
 			case 6:
-				gerente::listar_contas_correntista(bank);
+				gerente->listar_contas_correntista(bank);
 				break;
 			default:
 				std::cout<< std::endl;

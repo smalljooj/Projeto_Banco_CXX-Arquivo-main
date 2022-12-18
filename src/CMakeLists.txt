@@ -19,4 +19,5 @@ target_sources(
 	usuario.cpp
 	IO.cpp
 	arquivo.cpp
+	interfaces.cpp
 )

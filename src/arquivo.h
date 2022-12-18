@@ -10,7 +10,6 @@ namespace IO
 
 class arquivo 
 {
-protected:
 	static arquivo* arquivo_unique;
 
 	arquivo(){}

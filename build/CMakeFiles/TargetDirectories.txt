@@ -1,0 +1,3 @@
+C:/Users/ismae/Desktop/padroes/Projeto_Banco_CXX-Arquivo-main/build/CMakeFiles/BANCO_CXX.dir
+C:/Users/ismae/Desktop/padroes/Projeto_Banco_CXX-Arquivo-main/build/CMakeFiles/edit_cache.dir
+C:/Users/ismae/Desktop/padroes/Projeto_Banco_CXX-Arquivo-main/build/CMakeFiles/rebuild_cache.dir
