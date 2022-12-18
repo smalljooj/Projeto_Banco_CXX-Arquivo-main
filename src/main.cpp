@@ -1,5 +1,6 @@
 #include <iostream>
 #include "menu.h"
+#include "arquivo.h"
 
 int main()try{
 
@@ -8,10 +9,11 @@ int main()try{
 	std::string cnpj= "01.123.123/1234-12";
 
 	banco banquito{nome, data, cnpj, "banquito"};
-	arquivo::ler_arquivo(banquito);
+	IO::arquivo* arquivo_banco = IO::arquivo::get_instance();
 
+	arquivo_banco->ler_arquivo(banquito);
 	menu(banquito);
 
-	arquivo::salvar_arquivo(banquito);
+	arquivo_banco->salvar_arquivo(banquito);
 	return 0;
 }catch(...){}

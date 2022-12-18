@@ -18,5 +18,5 @@ target_sources(
 	gerente.cpp
 	usuario.cpp
 	IO.cpp
-
-	)
+	arquivo.cpp
+)

@@ -39,19 +39,13 @@ namespace console{
 			}
 			return value;
 		}
-		template<>
-			std::string read(std::string msg );
+	template<>
+		std::string read(std::string msg );
 
-		std::string readDataNasc(std::string msg = "");
-		std::string readCpf_Cnpj();
-		int readOp(int i, int f, std::string msg = "");
+	std::string readDataNasc(std::string msg = "");
+	std::string readCpf_Cnpj();
+	int readOp(int i, int f, std::string msg = "");
 
-	}
-
-namespace arquivo
-{
-	void salvar_arquivo(banco& bank);
-	void ler_arquivo(banco& bank);
 }
 
 #endif
