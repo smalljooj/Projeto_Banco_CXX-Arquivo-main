@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\BANCO_CXX.dir/objects.a
-C:\GCC\GCC8~1.1\bin\ar.exe qc CMakeFiles\BANCO_CXX.dir/objects.a @CMakeFiles\BANCO_CXX.dir\objects1.rsp
-C:\GCC\GCC8~1.1\bin\C__~1.EXE -Wl,--whole-archive CMakeFiles\BANCO_CXX.dir/objects.a -Wl,--no-whole-archive -o BANCO_CXX.exe -Wl,--out-implib,libBANCO_CXX.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\BANCO_CXX.dir\linklibs.rsp
